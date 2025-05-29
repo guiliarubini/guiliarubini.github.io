@@ -29,7 +29,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   onCloseSidebar,
 }) => {
   const navItems: NavItem[] = [
-    { id: 'about', label: 'About' },
+    { id: 'about', label: 'About me' },
     { id: 'projects', label: 'Projects' },
     { id: 'skills', label: 'Skills' },
     { id: 'experience', label: 'Experience' },
@@ -94,18 +94,18 @@ const Sidebar: React.FC<SidebarProps> = ({
         {/* Profile Image */}
         <img
           src={profileImage}
-          alt="Karim Safiullin"
+          alt="Giulia Rubini"
           className="w-32 h-32 rounded-full object-cover mb-5"
         />
-        <h1 className="text-2xl font-semibold text-center">Karim Safiullin</h1>
+        <h1 className="text-2xl font-semibold text-center">Giulia Rubini</h1>
         <p className="mt-2 mb-5 text-gray-600 text-center">
-          Senior Data Engineer
+          Fashion Designer
         </p>
 
         {/* Contact Icons */}
         <div className="flex mb-5 justify-center">
           <a
-            href="mailto:karim.safiullin.career@gmail.com"
+            href="mailto:g.rubini.fashiondesigner@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-800 hover:text-blue-500 transition-colors duration-300 p-2"
@@ -114,16 +114,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             <FaEnvelope size={24} />
           </a>
           <a
-            href="https://github.com/BondaiKa"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-800 hover:text-blue-500 transition-colors duration-300 p-2"
-            aria-label="GitHub"
-          >
-            <FaGithub size={24} />
-          </a>
-          <a
-            href="https://linkedin.com/in/karim-safiullin"
+            href="https://linkedin.com/in/giulia-rubini-387550177"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-800 hover:text-blue-500 transition-colors duration-300 p-2"
@@ -151,7 +142,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 
         {/* Footer */}
         <footer className="mt-auto text-gray-400 text-center">
-          <p>© 2024 Karim Safiullin</p>
+          <p>© 2025 Giulia Rubini</p>
         </footer>
       </aside>
     </>

@@ -4,6 +4,7 @@ const Sidebar = lazy(() => import('./components/Sidebar'));
 const MainContent = lazy(() => import('./pages/MainContent'));
 
 const App: React.FC = () => {
+  const [showIntro, setShowIntro] = useState(true);
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(() => window.innerWidth > 768);
   const [isMobile, setIsMobile] = useState<boolean>(() => window.innerWidth <= 768);
 
@@ -43,6 +44,26 @@ const App: React.FC = () => {
   const handleCloseSidebar = (): void => {
     setIsSidebarOpen(false);
   };
+
+  if (showIntro) {
+    return (
+      <div
+        style={{
+          backgroundColor: 'black',
+          color: 'white',
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '2rem',
+          cursor: 'pointer',
+        }}
+        onClick={() => setShowIntro(false)}
+      >
+        Giulia Rubini
+      </div>
+    );
+  }
 
   return (
     <Suspense fallback={<div>Loading...</div>}>

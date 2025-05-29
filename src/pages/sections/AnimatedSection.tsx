@@ -19,10 +19,10 @@ const AnimatedSection = () => {
           }`}
       >
         <h1 className="text-4xl mb-2 text-gray-800">
-          Hey guys <span role="img" aria-label="waving-hand">👋</span>! I am Karim
+          Hey guys <span role="img" aria-label="waving-hand">👋</span>! I am Guilia. You can call me Ruby :)
         </h1>
         <p className="text-lg text-gray-600 max-w-xl">
-          Senior Data Engineer with 6 years of experience and a background in Computer Science.
+          Fashion Designer with 6 years of experience!
         </p>
       </div>
 
@@ -32,10 +32,10 @@ const AnimatedSection = () => {
           }`}
       >
         <h1 className="text-4xl mb-2 text-gray-800">
-          Data Expert <span role="img" aria-label="gear">⚙️</span>
+          Fashion Designer <span role="img" aria-label="gear">⚙️</span>
         </h1>
         <p className="text-lg text-gray-600 max-w-xl">
-          Strong team player who develops and maintains large-scale infrastructure and implements complex data pipelines.
+          #TODO: add description here
         </p>
       </div>
     </div>

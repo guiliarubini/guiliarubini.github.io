@@ -5,13 +5,19 @@ const LanguagesSection = () => (
     <h2 className="text-3xl font-bold mb-4">Languages</h2>
     <ul className="list-disc list-inside space-y-2">
       <li>
-        <strong>English:</strong> C1
+        <strong>German:</strong> Full professional proficiency
       </li>
       <li>
-        <strong>German:</strong> A2
+        <strong>English:</strong> Fluent
       </li>
       <li>
-        <strong>Russian:</strong> Native Speaker
+        <strong>Italian:</strong> Native Speaker
+      </li>
+      <li>
+        <strong>France:</strong> Elementary proficiency
+      </li>
+      <li>
+        <strong>Spanish:</strong> Limited working proficiency
       </li>
     </ul>
   </div>
