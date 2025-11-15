@@ -82,6 +82,15 @@ const Sidebar: React.FC<SidebarProps> = ({
           isOpen ? 'translate-x-0' : '-translate-x-full'
         } ${isMobile ? 'w-2/5' : 'w-64'}`}
       >
+        {/* Close Button */}
+        <button
+          onClick={onCloseSidebar}
+          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray-600 hover:text-gray-900 transition-colors duration-300"
+          aria-label="Close Sidebar"
+        >
+          <FaTimes size={20} />
+        </button>
+
         {/* Profile Image */}
         <img
           src={profileImage}
