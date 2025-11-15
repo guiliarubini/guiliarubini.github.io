@@ -71,24 +71,22 @@ const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <>
-      {/* Hamburger Menu for Mobile */}
-      {isMobile && (
-        <div
-          className="fixed top-4 left-4 w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center text-2xl text-gray-800 cursor-pointer z-50 transition-colors duration-300 hover:bg-gray-200 hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300"
-          onClick={onToggleSidebar}
-          role="button"
-          tabIndex={0}
-          onKeyDown={handleHamburgerKeyDown}
-          aria-label="Toggle Sidebar"
-        >
-          {isOpen ? <FaTimes /> : <FaBars />}
-        </div>
-      )}
+      {/* Hamburger Menu - Always Visible */}
+      <div
+        className="fixed top-4 left-4 w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center text-2xl text-gray-800 cursor-pointer z-50 transition-colors duration-300 hover:bg-gray-200 hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300"
+        onClick={onToggleSidebar}
+        role="button"
+        tabIndex={0}
+        onKeyDown={handleHamburgerKeyDown}
+        aria-label="Toggle Sidebar"
+      >
+        {isOpen ? <FaTimes /> : <FaBars />}
+      </div>
 
       {/* Sidebar */}
       <aside
         className={`fixed top-0 left-0 h-full bg-gray-100 shadow-lg p-5 flex flex-col items-center transform transition-transform duration-300 z-40 ${
-          isOpen || !isMobile ? 'translate-x-0' : '-translate-x-full'
+          isOpen ? 'translate-x-0' : '-translate-x-full'
         } ${isMobile ? 'w-2/5' : 'w-64'}`}
       >
         {/* Profile Image */}

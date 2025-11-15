@@ -7,14 +7,13 @@ const MainContent = lazy(() => import('./pages/MainContent'));
 const App: React.FC = () => {
   const [showIntro, setShowIntro] = useState(true);
   const [isExiting, setIsExiting] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(() => window.innerWidth > 768);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(() => window.innerWidth <= 768);
 
   useEffect(() => {
     const handleResize = (): void => {
       const mobile = window.innerWidth <= 768;
       setIsMobile(mobile);
-      setIsSidebarOpen(!mobile);
     };
 
     window.addEventListener('resize', handleResize);
