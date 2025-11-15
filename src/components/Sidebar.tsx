@@ -1,14 +1,9 @@
 import React, { KeyboardEvent } from 'react';
 import {
-  FaEnvelope,
-  FaGithub,
-  FaLinkedin,
   FaBars,
   FaTimes,
-  FaFilePdf,
 } from 'react-icons/fa';
 import profileImage from '../assets/profile.jpg';
-import resumeFile from '../assets/resume.pdf';
 
 interface NavItem {
   id: string;
@@ -31,9 +26,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   const navItems: NavItem[] = [
     { id: 'about', label: 'About me' },
     { id: 'projects', label: 'Projects' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'education', label: 'Education' },
+    { id: 'contacts', label: 'Contacts' },
   ];
 
   const handleHamburgerKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
@@ -62,7 +55,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         <button
           type="button"
           onClick={() => handleNavClick(item.id)}
-          className="w-full py-2 text-center text-gray-800 bg-white hover:text-blue-500 transition-colors duration-300 rounded shadow"
+          className="w-full py-2 text-center text-gray-800 hover:text-blue-500 transition-colors duration-300"
         >
           {item.label}
         </button>
@@ -99,37 +92,6 @@ const Sidebar: React.FC<SidebarProps> = ({
         <p className="mt-2 mb-5 text-gray-600 text-center">
           Fashion Designer
         </p>
-
-        {/* Contact Icons */}
-        <div className="flex mb-5 justify-center">
-          <a
-            href="mailto:g.rubini.fashiondesigner@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-800 hover:text-blue-500 transition-colors duration-300 p-2"
-            aria-label="Email"
-          >
-            <FaEnvelope size={24} />
-          </a>
-          <a
-            href="https://linkedin.com/in/giulia-rubini-387550177"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-800 hover:text-blue-500 transition-colors duration-300 p-2"
-            aria-label="LinkedIn"
-          >
-            <FaLinkedin size={24} />
-          </a>
-          <a
-            href={resumeFile}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-800 hover:text-blue-500 transition-colors duration-300 p-2"
-            aria-label="Resume"
-          >
-            <FaFilePdf size={24} />
-          </a>
-        </div>
 
         {/* Navigation Links */}
         <nav className="w-full">

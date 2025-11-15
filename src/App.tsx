@@ -5,7 +5,6 @@ const Sidebar = lazy(() => import('./components/Sidebar'));
 const MainContent = lazy(() => import('./pages/MainContent'));
 
 const App: React.FC = () => {
-  const [showIntro, setShowIntro] = useState(true);
   const [isExiting, setIsExiting] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(() => window.innerWidth <= 768);
@@ -48,23 +47,19 @@ const App: React.FC = () => {
 
   const handleIntroComplete = () => {
     setIsExiting(true);
-    setTimeout(() => {
-      setShowIntro(false);
-    }, 800);
   };
 
-  if (showIntro) {
-    return <IntroScreen onComplete={handleIntroComplete} isExiting={isExiting} />;
-  }
-
   return (
-    <div
-      style={{
-        transform: isExiting ? 'translateY(0)' : 'translateY(100%)',
-        transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-      }}
-    >
-      <Suspense fallback={<div>Loading...</div>}>
+    <>
+      <IntroScreen onComplete={handleIntroComplete} isExiting={isExiting} />
+      <div
+        style={{
+          marginTop: isExiting ? '0' : '100vh',
+          opacity: isExiting ? 1 : 0,
+          transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)',
+        }}
+      >
+        <Suspense fallback={<div>Loading...</div>}>
         <Sidebar
           isOpen={isSidebarOpen}
           isMobile={isMobile}
@@ -73,7 +68,8 @@ const App: React.FC = () => {
         />
         <MainContent sidebarIsOpen={isSidebarOpen} />
       </Suspense>
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -1,7 +1,5 @@
 import React from 'react';
-import AnimatedSection from './sections/AnimatedSection';
 import ProjectsSection from './sections/ProjectsSection';
-import SkillsSection from './sections/SkillsSection';
 import ExperienceSection from './sections/ExperienceSection';
 import EducationSection from './sections/EducationSection';
 import CertificationsSection from './sections/CertificationsSection';
@@ -20,13 +18,10 @@ const MainContent: React.FC<MainContentProps> = ({ sidebarIsOpen }) => (
     }`}
   >
     <section id="about" className="mb-10">
-      <AnimatedSection />
+      {/* TODO: Add about me content */}
     </section>
     <section id="projects" className="mb-10">
       <ProjectsSection />
-    </section>
-    <section id="skills" className="mb-10">
-      <SkillsSection />
     </section>
     <section id="experience" className="mb-10">
       <ExperienceSection />

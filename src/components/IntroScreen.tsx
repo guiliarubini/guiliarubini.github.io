@@ -19,20 +19,20 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete, isExiting }) => {
     let timeoutId: NodeJS.Timeout;
 
     const typeChar = () => {
-      if (phaseIndex < texts.length) {
+        if (phaseIndex < texts.length) {
         if (charIndex < texts[phaseIndex].length) {
-          fullText += texts[phaseIndex][charIndex];
-          setDisplayedText(fullText);
-          charIndex++;
-          timeoutId = setTimeout(typeChar, 100);
-        } else {
-          phaseIndex++;
-          if (phaseIndex < texts.length) {
-            fullText += '\n';
+            fullText += texts[phaseIndex][charIndex];
             setDisplayedText(fullText);
-            charIndex = 0;
-            timeoutId = setTimeout(typeChar, 500);
-          }
+            charIndex++;
+            timeoutId = setTimeout(typeChar, 100);
+        } else {
+            phaseIndex++;
+            if (phaseIndex < texts.length) {
+                fullText += '\n';
+                setDisplayedText(fullText);
+                charIndex = 0;
+                timeoutId = setTimeout(typeChar, 500);
+            }
         }
       }
     };
@@ -75,29 +75,47 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete, isExiting }) => {
       style={{
         backgroundColor: 'black',
         color: 'white',
-        height: '100vh',
+        minHeight: isExiting ? '120px' : '100vh',
         display: 'flex',
-        alignItems: 'center',
+        alignItems: isExiting ? 'center' : 'center',
         justifyContent: 'center',
-        fontSize: '4rem',
-        cursor: 'pointer',
+        fontSize: isExiting ? '2rem' : '4rem',
+        cursor: isExiting ? 'default' : 'pointer',
         flexDirection: 'column',
         fontFamily: '"Playfair Display", "Georgia", serif',
         fontWeight: '300',
         letterSpacing: '0.1em',
-        position: 'fixed',
+        position: 'sticky',
         top: 0,
         left: 0,
         right: 0,
-        zIndex: 1000,
-        transform: isExiting ? 'translateY(-100%)' : 'translateY(0)',
-        transition: 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+        zIndex: 100,
+        paddingTop: isExiting ? '1.5rem' : '0',
+        paddingBottom: isExiting ? '1.5rem' : '0',
+        transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)',
       }}
-      onClick={onComplete}
+      onClick={!isExiting ? onComplete : undefined}
     >
-      <div style={{ whiteSpace: 'pre-line', textAlign: 'center' }}>
-        {displayedText}
-        <span style={{ opacity: showCursor ? 1 : 0 }}>|</span>
+      <div style={{ textAlign: 'center' }}>
+        <div
+          style={{
+            transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)',
+          }}
+        >
+          {displayedText.split('\n')[0]}
+        </div>
+        <div
+          style={{
+            opacity: isExiting ? 0 : 1,
+            maxHeight: isExiting ? '0' : '100px',
+            overflow: 'hidden',
+            transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)',
+            marginTop: isExiting ? '0' : '0.5rem',
+          }}
+        >
+          {displayedText.split('\n')[1]}
+        </div>
+        <span style={{ opacity: showCursor && !isExiting ? 1 : 0, transition: 'opacity 0.3s' }}>|</span>
       </div>
     </div>
   );
