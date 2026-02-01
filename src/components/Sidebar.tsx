@@ -111,7 +111,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 
         {/* Footer */}
         <footer className="mt-auto text-white/30 text-center text-xs font-sans tracking-wide">
-          <p>© 2025 Giulia Rubini</p>
+          <p>© 2026 Giulia Rubini</p>
         </footer>
       </aside>
     </>

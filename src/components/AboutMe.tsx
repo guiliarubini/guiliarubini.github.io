@@ -34,8 +34,8 @@ const AboutMe: React.FC = () => {
             
             <p className="text-base md:text-lg text-white/70 leading-loose font-light">
               While studying, I worked as a sales assistant because I
-              wanted to be more economically independent but also be-
-              cause I've always been curious and I wanted to understand
+              wanted to be more economically independent but also because
+              I've always been curious and I wanted to understand
               customers and the final part of the fashion production
               process.
             </p>
@@ -43,20 +43,19 @@ const AboutMe: React.FC = () => {
             <p className="text-base md:text-lg text-white/70 leading-loose font-light">
               During my last semester, I was selected for a special
               project about sustainability with the fashion designer
-              Tiziano Guardini. Together, we created a capsule collec-
-              tion that was displayed at various fashion shows, in-
-              cluding the NABA Fashion Show and Sustainable Visions
+              Tiziano Guardini. Together, we created a capsule collection
+              that was displayed at various fashion shows, including
+              the NABA Fashion Show and Sustainable Visions
               Fashion Show 2019.
             </p>
             
             <p className="text-base md:text-lg text-white/70 leading-loose font-light">
               As a Fashion Designer, my goal is to create fresh and
-              cool designs that suit the needs of the customers with-
-              out loosing any details. I had experience working with
+              cool designs that suit the needs of the customers without
+              loosing any details. I had experience working with
               denim and pants, trims, prints, hangtags and waist tag.
-              I'm really curious and willing to explore other cathego-
-              ries, countries and continuing to learn and improve ev-
-              eryday.
+              I'm really curious and willing to explore other categories,
+              countries and continuing to learn and improve everyday.
             </p>
             
             <div className="pt-8 space-y-2">

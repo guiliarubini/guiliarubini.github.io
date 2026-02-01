@@ -2,6 +2,7 @@ import React from 'react';
 import ProjectsSection from './sections/ProjectsSection';
 import AboutMe from '../components/AboutMe';
 import Contacts from '../components/Contacts';
+import Impressum from '../components/Impressum';
 
 interface MainContentProps {
   sidebarIsOpen: boolean;
@@ -25,6 +26,10 @@ const MainContent: React.FC<MainContentProps> = ({ sidebarIsOpen }) => (
 
     <section id="contacts" className="mb-16 md:mb-32">
       <Contacts />
+    </section>
+
+    <section id="impressum">
+      <Impressum />
     </section>
   </div>
 );
