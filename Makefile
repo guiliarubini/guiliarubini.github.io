@@ -11,10 +11,6 @@ run:
 build:
 	npm run build
 
-.PHONY: deploy
-deploy:
-	npm run deploy
-
 .PHONY: clean
 clean:
 	rm -rf node_modules package-lock.json
