@@ -72,6 +72,7 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete, isExiting }) => {
 
   return (
     <div
+      className="intro-screen-container"
       style={{
         backgroundColor: 'black',
         color: 'white',
@@ -79,7 +80,6 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete, isExiting }) => {
         display: 'flex',
         alignItems: isExiting ? 'center' : 'center',
         justifyContent: 'center',
-        fontSize: '4rem',
         cursor: isExiting ? 'default' : 'pointer',
         flexDirection: 'column',
         fontFamily: '"Playfair Display", "Georgia", serif',
@@ -93,8 +93,9 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete, isExiting }) => {
       }}
       onClick={!isExiting ? onComplete : undefined}
     >
-      <div style={{ textAlign: 'center' }}>
+      <div className="text-center px-4">
         <div
+          className="text-4xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl"
           style={{
             transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)',
           }}
@@ -105,12 +106,13 @@ const IntroScreen: React.FC<IntroScreenProps> = ({ onComplete, isExiting }) => {
           )}
         </div>
         <div
+          className="text-4xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl break-words mt-2 sm:mt-4 md:mt-6 lg:mt-8"
           style={{
             opacity: isExiting ? 0 : 1,
-            maxHeight: isExiting ? '0' : '100px',
+            maxHeight: isExiting ? '0' : '200px',
             overflow: 'hidden',
             transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)',
-            marginTop: isExiting ? '0' : '0.5rem',
+            marginTop: isExiting ? '0' : undefined,
           }}
         >
           {displayedText.split('\n')[1]}
