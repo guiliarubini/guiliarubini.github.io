@@ -30,6 +30,20 @@ const Contacts: React.FC = () => {
               +39 3492959753
             </a>
           </div>
+          
+          <div className="space-y-2 pt-4">
+            <p className="text-xs uppercase tracking-luxury text-white/40 font-sans font-light">
+              LinkedIn:
+            </p>
+            <a 
+              href="https://www.linkedin.com/in/giulia-rubini-387550177/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-base md:text-lg text-white/60 hover:text-white transition-all duration-700 font-sans font-light"
+            >
+              Giulia Rubini
+            </a>
+          </div>
         </div>
       </div>
     </section>
