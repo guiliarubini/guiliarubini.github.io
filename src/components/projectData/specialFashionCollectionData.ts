@@ -1,8 +1,8 @@
 import { Project } from './types';
-import denibleHead from '../../../assets/special_fashion_collection/DENIBLE_head.png';
-import denibleExample1 from '../../../assets/special_fashion_collection/denible_example_1.png';
-import denibleExample2 from '../../../assets/special_fashion_collection/denible_example_2.png';
-import denibleExample3 from '../../../assets/special_fashion_collection/denible_example_3.png';
+import denibleHead from '../../assets/special_fashion_collection/DENIBLE_head.png';
+import denibleExample1 from '../../assets/special_fashion_collection/denible_example_1.png';
+import denibleExample2 from '../../assets/special_fashion_collection/denible_example_2.png';
+import denibleExample3 from '../../assets/special_fashion_collection/denible_example_3.png';
 
 export const specialFashionCollectionProject: Project = {
   id: 'specialfashioncollection',

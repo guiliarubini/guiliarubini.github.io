@@ -1,30 +1,23 @@
 import React, { useState } from 'react';
-import { Project } from './data/types';
-import { newYorkerProject } from './data/newYorkerData';
-import { fashionShowProject } from './data/fashionShowData';
-import { specialFashionCollectionProject } from './data/specialFashionCollectionData';
+import { Project } from './projectData/types';
+import { newYorkerProject } from './projectData/newYorkerData';
+import { fashionShowProject } from './projectData/fashionShowData';
+import { specialFashionCollectionProject } from './projectData/specialFashionCollectionData';
 
 const projects: Project[] = [newYorkerProject, fashionShowProject, specialFashionCollectionProject];
 
 const ProjectsSection: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
-  const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
   const [selectedFilter, setSelectedFilter] = useState<string>('All');
 
   const handleProjectClick = (projectId: string) => {
     setSelectedProject(projectId);
-    setSelectedSubcategory(null);
     setSelectedFilter('All');
   };
 
   const handleBackToProjects = () => {
     setSelectedProject(null);
-    setSelectedSubcategory(null);
     setSelectedFilter('All');
-  };
-
-  const handleSubcategoryClick = (subcategoryName: string) => {
-    setSelectedSubcategory(subcategoryName);
   };
 
   const handleFilterClick = (filterName: string) => {
@@ -59,10 +52,9 @@ const ProjectsSection: React.FC = () => {
               onClick={() => handleProjectClick(project.id)}
             >
               <div className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-16 items-center`}>
-                {/* Image Placeholder */}
                 <div className="w-3/4 mx-auto md:mx-0 md:w-2/5 flex items-center justify-center group-hover:opacity-90 transition-all duration-700">
                   <img 
-                    src={project.coverImage} 
+                    src={project.coverImage || undefined} 
                     alt={project.title}
                     className="w-full h-auto object-contain"
                   />

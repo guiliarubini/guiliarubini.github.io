@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectsSection from './sections/ProjectsSection';
+import ProjectsSection from '../components/ProjectsSection';
 import AboutMe from '../components/AboutMe';
 import Contacts from '../components/Contacts';
 import Impressum from '../components/Impressum';
