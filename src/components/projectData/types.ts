@@ -1,6 +1,7 @@
 export interface GalleryItem {
   image: string;
   description: string;
+  tags?: string[];
 }
 
 export interface Subcategory {

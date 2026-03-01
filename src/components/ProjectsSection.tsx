@@ -10,14 +10,19 @@ const ProjectsSection: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const [selectedFilter, setSelectedFilter] = useState<string>('All');
 
-  const handleProjectClick = (projectId: string) => {
+  const handleProjectClick = (projectId: string, tag?: string) => {
     setSelectedProject(projectId);
-    setSelectedFilter('All');
+    setSelectedFilter(tag || 'All');
   };
 
   const handleBackToProjects = () => {
     setSelectedProject(null);
     setSelectedFilter('All');
+  };
+
+  const handleTagClick = (e: React.MouseEvent, projectId: string, tag: string) => {
+    e.stopPropagation();
+    handleProjectClick(projectId, tag);
   };
 
   const handleFilterClick = (filterName: string) => {
@@ -26,17 +31,22 @@ const ProjectsSection: React.FC = () => {
 
   const currentProject = projects.find((p) => p.id === selectedProject);
   
-  // Flatten all items from all subcategories with category info
+  // Get all items (from subcategories or direct items)
   const allProjectItems = currentProject?.subcategories
-    ? currentProject.subcategories.flatMap((sub) => 
-        sub.items.map(item => ({ ...item, category: sub.name }))
-      )
-    : currentProject?.items?.map(item => ({ ...item, category: null })) || [];
+    ? currentProject.subcategories.flatMap((sub) => sub.items)
+    : currentProject?.items || [];
 
-  // Filter items based on selected filter
+  // Get unique tags from all items
+  const uniqueTags = currentProject ? Array.from(
+    new Set(
+      allProjectItems.flatMap(item => item.tags || [])
+    )
+  ).sort() : [];
+
+  // Filter items based on selected filter (tag)
   const filteredItems = selectedFilter === 'All' 
     ? allProjectItems 
-    : allProjectItems.filter(item => item.category === selectedFilter);
+    : allProjectItems.filter(item => item.tags?.includes(selectedFilter));
 
   return (
     <div className="py-12 md:py-20 px-6 md:px-8">
@@ -73,18 +83,27 @@ const ProjectsSection: React.FC = () => {
                   <p className="text-base md:text-lg text-white/60 leading-loose">
                     {project.description}
                   </p>
-                  {project.subcategories && (
-                    <div className="flex flex-wrap gap-3 pt-4">
-                      {project.subcategories.map((sub) => (
-                        <span
-                          key={sub.name}
-                          className="px-4 py-2 text-xs uppercase tracking-luxury bg-white/10 text-white/60 border border-white/20"
-                        >
-                          {sub.name}
-                        </span>
-                      ))}
-                    </div>
-                  )}
+                  {(() => {
+                    const projectItems = project.subcategories 
+                      ? project.subcategories.flatMap(sub => sub.items)
+                      : project.items || [];
+                    const projectTags = Array.from(
+                      new Set(projectItems.flatMap(item => item.tags || []))
+                    ).sort();
+                    return projectTags.length > 0 && (
+                      <div className="flex flex-wrap gap-3 pt-4">
+                        {projectTags.map((tag) => (
+                          <span
+                            key={tag}
+                            onClick={(e) => handleTagClick(e, project.id, tag)}
+                            className="px-4 py-2 text-xs uppercase tracking-luxury bg-white/10 text-white/60 border border-white/20 cursor-pointer hover:bg-white/20 hover:text-white transition-all duration-300"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    );
+                  })()}
                   <div className="pt-6">
                     <span className="inline-flex items-center gap-3 text-white/40 text-xs uppercase tracking-luxury group-hover:text-white group-hover:gap-5 transition-all duration-700">
                       View Project <span>→</span>
@@ -110,8 +129,8 @@ const ProjectsSection: React.FC = () => {
 
           <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white mb-8 md:mb-16 tracking-editorial">{currentProject.title}</h3>
 
-          {/* Categories/Tags Display */}
-          {currentProject.subcategories && (
+          {/* Tags Filter */}
+          {uniqueTags.length > 0 && (
             <div className="mb-20">
               <div className="flex flex-wrap gap-4">
                 <button
@@ -124,17 +143,17 @@ const ProjectsSection: React.FC = () => {
                 >
                   All
                 </button>
-                {currentProject.subcategories.map((subcategory) => (
+                {uniqueTags.map((tag) => (
                   <button
-                    key={subcategory.name}
-                    onClick={() => handleFilterClick(subcategory.name)}
+                    key={tag}
+                    onClick={() => handleFilterClick(tag)}
                     className={`px-6 py-3 text-xs uppercase tracking-luxury border transition-all duration-700 font-sans ${
-                      selectedFilter === subcategory.name
+                      selectedFilter === tag
                         ? 'bg-white text-black border-white'
                         : 'bg-transparent text-white/40 border-white/10 hover:text-white hover:border-white/30'
                     }`}
                   >
-                    {subcategory.name}
+                    {tag}
                   </button>
                 ))}
               </div>
