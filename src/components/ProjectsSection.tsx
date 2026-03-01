@@ -36,17 +36,24 @@ const ProjectsSection: React.FC = () => {
     ? currentProject.subcategories.flatMap((sub) => sub.items)
     : currentProject?.items || [];
 
-  // Get unique tags from all items
+  // Get unique tags from all items and sort in descending order SS26, SS25, SS24, SS23, etc.
   const uniqueTags = currentProject ? Array.from(
     new Set(
       allProjectItems.flatMap(item => item.tags || [])
     )
-  ).sort() : [];
+  ).sort().reverse() : [];
 
   // Filter items based on selected filter (tag)
-  const filteredItems = selectedFilter === 'All' 
+  const filteredItemsUnsorted = selectedFilter === 'All' 
     ? allProjectItems 
     : allProjectItems.filter(item => item.tags?.includes(selectedFilter));
+
+  // Sort items by tags in descending order (SS26, SS25, SS24, SS23, etc.)
+  const filteredItems = [...filteredItemsUnsorted].sort((a, b) => {
+    const aTag = a.tags?.[0] || '';
+    const bTag = b.tags?.[0] || '';
+    return bTag.localeCompare(aTag);
+  });
 
   return (
     <div className="py-12 md:py-20 px-6 md:px-8">
