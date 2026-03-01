@@ -9,6 +9,8 @@ import shinyPants from '../../assets/new_yorker_project/shiny_pants_ss_24.png';
 import tailoringSet from '../../assets/new_yorker_project/tailoring_set_ss_24.png';
 import ss_26_brownPants from '../../assets/new_yorker_project/ss_26_brown_panties.jpg';
 import ss_26_video from '../../assets/new_yorker_project/ss_26_video.mp4';
+import ss_26_blackDress from '../../assets/new_yorker_project/ss_26_black_dress.jpg';
+import aw_25_video from '../../assets/new_yorker_project/aw_25_video.mp4';
 
 export const newYorkerProject: Project = {
   id: 'newyorker',
@@ -17,10 +19,22 @@ export const newYorkerProject: Project = {
   coverImage: newYorkerLogo,
   items: [
     {
+      video: aw_25_video,
+      image: aw_25_video,
+      isVideo: true,
+      description: 'Current winter favorites on repeat. Built around comfort, layering, and pieces that make winter dressing easy. ❄️',
+      tags: ['AW25'],
+    },
+    {
       video: ss_26_video,
       image: ss_26_video,
       isVideo: true,
       description: 'Spring is a reset. Longer days, softer moments and the freedom to move with ease. Our new collection captures the lightness of the season — crafted for wherever spring takes you. 🌸',
+      tags: ['SS26'],
+    },
+    {
+      image: ss_26_blackDress,
+      description: "Spring is finally here, and we're welcoming the season with a classic we'll never get tired of. Light fabrics and timeless polka dots — the first look from our new Spring Collection. 🤍⁣",
       tags: ['SS26'],
     },
     {

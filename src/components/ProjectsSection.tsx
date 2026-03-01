@@ -36,23 +36,34 @@ const ProjectsSection: React.FC = () => {
     ? currentProject.subcategories.flatMap((sub) => sub.items)
     : currentProject?.items || [];
 
-  // Get unique tags from all items and sort in descending order SS26, SS25, SS24, SS23, etc.
+  // Helper function to convert tag to sortable value (by year priority)
+  const getTagSortValue = (tag: string): number => {
+    const match = tag.match(/^(SS|AW)(\d+)$/);
+    if (!match) return 0;
+    const season = match[1];
+    const year = parseInt(match[2], 10);
+    // SS is first half of year (e.g., SS26 = 26.0)
+    // AW is second half of year (e.g., AW25 = 25.5)
+    return season === 'SS' ? year : year + 0.5;
+  };
+
+  // Get unique tags from all items and sort by year priority (descending)
   const uniqueTags = currentProject ? Array.from(
     new Set(
       allProjectItems.flatMap(item => item.tags || [])
     )
-  ).sort().reverse() : [];
+  ).sort((a, b) => getTagSortValue(b) - getTagSortValue(a)) : [];
 
   // Filter items based on selected filter (tag)
   const filteredItemsUnsorted = selectedFilter === 'All' 
     ? allProjectItems 
     : allProjectItems.filter(item => item.tags?.includes(selectedFilter));
 
-  // Sort items by tags in descending order (SS26, SS25, SS24, SS23, etc.)
+  // Sort items by tags in descending order by year priority
   const filteredItems = [...filteredItemsUnsorted].sort((a, b) => {
     const aTag = a.tags?.[0] || '';
     const bTag = b.tags?.[0] || '';
-    return bTag.localeCompare(aTag);
+    return getTagSortValue(bTag) - getTagSortValue(aTag);
   });
 
   return (
