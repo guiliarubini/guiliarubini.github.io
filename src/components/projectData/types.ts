@@ -2,6 +2,8 @@ export interface GalleryItem {
   image: string;
   description: string;
   tags?: string[];
+  video?: string;
+  isVideo?: boolean;
 }
 
 export interface Subcategory {

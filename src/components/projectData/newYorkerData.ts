@@ -8,6 +8,7 @@ import denimWideLegLaser from '../../assets/new_yorker_project/denim_wode_leg_wi
 import shinyPants from '../../assets/new_yorker_project/shiny_pants_ss_24.png';
 import tailoringSet from '../../assets/new_yorker_project/tailoring_set_ss_24.png';
 import ss_26_brownPants from '../../assets/new_yorker_project/ss_26_brown_panties.jpg';
+import ss_26_video from '../../assets/new_yorker_project/ss_26_video.mp4';
 
 export const newYorkerProject: Project = {
   id: 'newyorker',
@@ -15,6 +16,13 @@ export const newYorkerProject: Project = {
   description: 'Commercial fashion design projects for New Yorker brand',
   coverImage: newYorkerLogo,
   items: [
+    {
+      video: ss_26_video,
+      image: ss_26_video,
+      isVideo: true,
+      description: 'Spring is a reset. Longer days, softer moments and the freedom to move with ease. Our new collection captures the lightness of the season — crafted for wherever spring takes you. 🌸',
+      tags: ['SS26'],
+    },
     {
       image: deneamJeansWoman1,
       description: 'Denim jeans - woman with car',

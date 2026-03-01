@@ -174,13 +174,24 @@ const ProjectsSection: React.FC = () => {
                 key={index}
                 className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-16 items-center`}
               >
-                {/* Image */}
+                {/* Image or Video */}
                 <div className="w-3/4 mx-auto md:mx-0 md:w-1/2 flex items-center justify-center">
-                  <img 
-                    src={item.image} 
-                    alt={item.description}
-                    className="w-full h-auto object-contain"
-                  />
+                  {item.isVideo && item.video ? (
+                    <video 
+                      src={item.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-auto object-contain"
+                    />
+                  ) : (
+                    <img 
+                      src={item.image} 
+                      alt={item.description}
+                      className="w-full h-auto object-contain"
+                    />
+                  )}
                 </div>
 
                 {/* Description */}
